@@ -1,0 +1,6 @@
+{
+    "jsFiles": [{
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/editorModal/customViewController.js\"}",
+        "key": "applications.customViewModule"
+    }]
+}

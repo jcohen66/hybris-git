@@ -1,0 +1,24 @@
+<div class="ySEPageInfoStaticInfo">
+    <div class="ySEPageInfoStaticInfoContainer">
+        <div class="row ySEPageIngoRow">
+            <div class="col-md-6">
+                <p class="ySEHeaderText">{{'se.cms.pageinfo.information.title' | translate}}</p>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-link pull-right ySEPageInfo__edit-btn"
+                    has-operation-permission="'se.edit.page.link'"
+                    data-ng-click="$ctrl.onEditClick()">
+                    {{'se.cms.contextmenu.title.edit' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div data-ng-if="$ctrl.pageStructure"
+        class="ySEPageInfoEditInfoContainer">
+        <generic-editor data-smartedit-component-id="$ctrl.pageUid"
+            data-smartedit-component-type="$ctrl.pageTypeCode"
+            data-structure="$ctrl.pageStructure"
+            data-content="$ctrl.pageContent">
+        </generic-editor>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{
+    "jsFiles": [{
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/util/commonMockedModule/setApparelStagedUKExperience.js\"}",
+        "key": "applications.setApparelStagedUKExperience"
+    }, {
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/genericEditor/carouselComponent/customViewController.js\"}",
+        "key": "applications.customViewModule"
+    }]
+}

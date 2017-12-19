@@ -1,0 +1,22 @@
+<y-message data-type="danger"
+    class="se-restrictions-editor--y-message--modal-adjusted"
+    ng-repeat="error in ctrl.errors">
+    <message-description>
+        <translate>{{error.message}}</translate>
+    </message-description>
+</y-message>
+<div data-ng-if="ctrl.restrictions.length > 1">
+    <page-restrictions-info-message />
+</div>
+
+<restrictions-editor data-ng-if="ctrl.isReady"
+    data-editable="true"
+    data-reset-fn="ctrl.resetTab"
+    data-cancel-fn="ctrl.cancelTab"
+    data-is-dirty-fn="ctrl.isDirtyTab"
+    data-on-restrictions-changed="ctrl.restrictionsResult($onlyOneRestrictionMustApply, $restrictions)"
+    data-item="ctrl.page"
+    data-restrictions="ctrl.page.restrictions"
+    data-get-restriction-types="ctrl.getRestrictionTypes()"
+    data-get-supported-restriction-types="ctrl.getSupportedRestrictionTypes()">
+</restrictions-editor>

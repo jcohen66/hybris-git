@@ -1,0 +1,28 @@
+<div class="shared-slot-button-template">
+    <a type="button"
+        data-ng-if="ctrl.slotSharedFlag">
+        <div class="btn-group se-slot-ctx-menu__btn-group"
+            data-uib-dropdown
+            data-dropdown-append-to-body
+            data-auto-close="outsideClick"
+            data-is-open="ctrl.isPopupOpened">
+            <button type="button"
+                data-uib-dropdown-toggle
+                class="btn btn-primary shared-slot-button-template__btn se-slot-ctx-menu__divider"
+                data-ng-class="{'ySESharedSlotOpen': ctrl.isPopupOpened}"
+                id="sharedSlotButton-{{::ctrl.slotId}}">
+                <span class="hyicon hyicon-linked se-slot-ctx-menu__icon-shared"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right btn-block shared-slot-button-template__menu"
+                data-uib-dropdown-menu
+                role="menu">
+                <li role="menuitem">
+                    <div class="shared-slot-button-template__menu__title__text">
+                        <span class="shared-slot-button-template__menu__title__text__msg"
+                            data-translate="se.cms.slot.shared.popover.message"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </a>
+</div>

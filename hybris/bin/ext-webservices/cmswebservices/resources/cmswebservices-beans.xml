@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2017 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	<bean class="de.hybris.platform.webservicescommons.dto.error.ErrorWsDTO">
+		<property name="language" type="String"/>
+		<property name="position" type="Integer"/>
+		<property name="exceptionMessage" type="String"/>
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.OptionData">
+		<property name="value" type="String" deprecated="Deprecated since 6.4, please use the id attribute of OptionData instead." />
+		<property name="id" type="String" />
+		<property name="label" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.LanguageListData">
+		<property name="languages" type="java.util.List&lt;de.hybris.platform.commercefacades.storesession.data.LanguageData>" />
+	</bean>
+
+	<!-- Media beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.MediaData">
+		<property name="uuid" type="String" />
+		<property name="code" type="String" />
+		<property name="catalogId" type="String" />
+		<property name="catalogVersion" type="String" />
+		<property name="mime" type="String" />
+		<property name="altText" type="String" />
+		<property name="description" type="String" />
+		<property name="url" type="String" />
+		<property name="downloadUrl" type="String" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.MediaListData">
+		<property name="media" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.MediaData>" />
+	</bean>
+
+	<!-- Named Query beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.NamedQueryData">
+		<property name="namedQuery" type="String" />
+		<property name="params" type="String" />
+		<property name="sort" type="String" />
+		<property name="pageSize" type="String" />
+		<property name="currentPage" type="String" />
+		<property name="queryType" type="java.lang.Class&lt;?>" />
+	</bean>
+
+	<!-- Item Component beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.AbstractCMSComponentData">
+		<property name="pk" type="String" />
+		<property name="creationtime" type="java.util.Date" />
+		<property name="modifiedtime" type="java.util.Date" />
+		<property name="uid" type="String" />
+		<property name="name" type="String" />
+		<property name="visible" type="Boolean" />
+		<property name="typeCode" type="String" />
+		<property name="slotId" type="String" />
+		<property name="pageId" type="String" />
+		<property name="position" type="Integer" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.CMSParagraphComponentData" extends="AbstractCMSComponentData">
+		<property name="content" type="java.util.Map&lt;String, String&gt;" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.SimpleBannerComponentData" extends="AbstractCMSComponentData">
+		<property name="media" type="java.util.Map&lt;String, String&gt;" />
+		<property name="urlLink" type="String" />
+		<property name="external" type="Boolean" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.BannerComponentData" extends="AbstractCMSComponentData">
+		<property name="content" type="java.util.Map&lt;String, String&gt;" />
+		<property name="headline" type="java.util.Map&lt;String, String&gt;" />
+		<property name="media" type="java.util.Map&lt;String, String&gt;" />
+		<property name="urlLink" type="String" />
+		<property name="external" type="Boolean" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.CMSLinkComponentData" extends="AbstractCMSComponentData">
+		<property name="linkName" type="java.util.Map&lt;String, String>" />
+		<property name="url" type="String" />
+		<property name="contentPage" type="String" />
+		<property name="product" type="String" />
+		<property name="category" type="String" />
+		<property name="external" type="Boolean" />
+		<property name="target" type="boolean" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.SimpleResponsiveBannerComponentData" extends="AbstractCMSComponentData">
+		<property name="media" type="java.util.Map&lt;String, java.util.Map&lt;String, String>>" />
+		<property name="urlLink" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.NavigationComponentData" extends="AbstractCMSComponentData">
+		<property name="navigationNode" type="String" />
+		<property name="wrapAfter" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.ProductCarouselComponentData" extends="AbstractCMSComponentData">
+		<property name="title" type="java.util.Map&lt;String, String>" />
+		<property name="products" type="java.util.List&lt;String>" />
+		<property name="categories" type="java.util.List&lt;String>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.MediaContainerData">
+		<property name="formatMediaCodeMap" type="java.util.Map&lt;String, String>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.ComponentItemListData">
+		<property name="componentItems" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.AbstractCMSComponentData>" />
+		<property name="pagination" type="de.hybris.platform.webservicescommons.dto.PaginationWsDTO" />
+	</bean>
+
+	<!-- Content Slot beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.PageContentSlotComponentData">
+		<property name="pageId" type="String" />
+		<property name="componentId" type="String" />
+		<property name="componentUuid" type="String" />
+		<property name="slotId" type="String" />
+		<property name="position" type="Integer" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.PageContentSlotComponentListData">
+		<property name="pageContentSlotComponentList" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.PageContentSlotComponentData>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.PageContentSlotData">
+		<property name="pageId" type="String" />
+		<property name="slotId" type="String" />
+		<property name="position" type="String" />
+		<property name="slotShared" type="boolean" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.PageContentSlotListData">
+		<property name="pageContentSlotList" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.PageContentSlotData>" />
+	</bean>
+
+	<!-- Page Restriction beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.PageRestrictionData">
+		<property name="pageId" type="String" />
+		<property name="restrictionId" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.PageRestrictionListData">
+		<property name="pageRestrictionList" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.PageRestrictionData>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.PageTypeRestrictionTypeData">
+		<property name="pageType" type="String" />
+		<property name="restrictionType" type="String" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.PageTypeRestrictionTypeListData">
+		<property name="pageTypeRestrictionTypeList" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.PageTypeRestrictionTypeData>" />
+	</bean>
+
+	<!-- Page beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.AbstractPageData">
+		<property name="uuid" type="String" />
+		<property name="pk" type="String" />
+		<property name="creationtime" type="java.util.Date" />
+		<property name="modifiedtime" type="java.util.Date" />
+		<property name="uid" type="String" />
+		<property name="name" type="String" />
+		<property name="title" type="java.util.Map&lt;String,String>" />
+		<property name="typeCode" type="String" />
+		<property name="template" type="String" />
+		<property name="defaultPage" type="Boolean" />
+		<property name="onlyOneRestrictionMustApply" type="Boolean" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.ContentPageData" extends="AbstractPageData">
+		<property name="label" type="String" />
+		<property name="path" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.ProductPageData" extends="AbstractPageData">
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.EmailPageData" extends="AbstractPageData">
+		<property name="fromEmail" type="java.util.Map&lt;String,String>" />
+		<property name="fromName" type="java.util.Map&lt;String,String>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.CategoryPageData" extends="AbstractPageData">
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.CatalogPageData" extends="AbstractPageData">
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.PageListData">
+		<property name="pages" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.AbstractPageData>" />
+		<property name="pagination" type="de.hybris.platform.webservicescommons.dto.PaginationWsDTO" />
+	</bean>
+
+	<!-- Restrictions beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.AbstractRestrictionData">
+		<property name="uuid" type="String" />
+		<property name="uid" type="String" />
+		<property name="name" type="String" />
+		<property name="description" type="String" />
+		<property name="typeCode" type="String" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.TimeRestrictionData" extends="AbstractRestrictionData">
+		<property name="activeFrom" type="java.util.Date" />
+		<property name="activeUntil" type="java.util.Date" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.CategoryRestrictionData" extends="AbstractRestrictionData">
+		<property name="recursive" type="boolean" />
+		<property name="categories" type="java.util.List&lt;String>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.UserGroupRestrictionData" extends="AbstractRestrictionData">
+		<property name="includeSubgroups" type="boolean" />
+		<property name="userGroups" type="java.util.List&lt;String>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.RestrictionListData">
+		<property name="restrictions" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.AbstractRestrictionData>" />
+		<property name="pagination" type="de.hybris.platform.webservicescommons.dto.PaginationWsDTO" />
+	</bean>
+	
+	<!-- List beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.UidListData">
+		<property name="uids" type="java.util.List&lt;String>" />
+	</bean>
+	
+	<!-- Navigation beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.NavigationEntryTypeData">
+		<property name="itemType" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.NavigationEntryTypeListData">
+		<property name="navigationEntryTypes" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.NavigationEntryTypeData>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.NavigationEntryData">
+		<property name="itemId" type="String" />
+		<property name="itemType" type="String" />
+		<property name="itemSuperType" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.NavigationNodeData">
+		<property name="uid" type="String" />
+		<property name="parentUid" type="String" />
+		<property name="name" type="String" />
+		<property name="title" type="java.util.Map&lt;String,String>" />
+		<property name="hasChildren" type="Boolean" />
+		<property name="position" type="Integer" />
+		<property name="entries" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.NavigationEntryData>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.NavigationNodeListData">
+		<property name="navigationNodes" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.NavigationNodeData>" />
+	</bean>
+
+	<!-- Site beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.SiteData">
+		<property name="uid" type="String" />
+		<property name="previewUrl" type="String" />
+		<property name="redirectUrl" type="String" deprecated="Deprecated since 6.4"/>
+		<property name="name" type="java.util.Map&lt;String, String>" />
+		<property name="thumbnailUrl" type="String" deprecated="Deprecated since 6.4, please use de.hybris.platform.cmssmarteditwebservices.data.CatalogData instead."/>
+		<property name="contentCatalogs" type="java.util.List&lt;String>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.SiteListData">
+		<property name="sites" type="java.util.Collection&lt;SiteData>" />
+	</bean>
+
+	<!-- Composed Type beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.ComposedTypeData">
+		<property name="code" type="String" />
+		<property name="name" type="java.util.Map&lt;String,String>" />
+		<property name="description" type="java.util.Map&lt;String,String>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.RestrictionTypeData" extends="de.hybris.platform.cmswebservices.data.ComposedTypeData" />
+
+	<bean class="de.hybris.platform.cmswebservices.data.PageTypeData" extends="de.hybris.platform.cmswebservices.data.ComposedTypeData">
+		<property name="type" type="String" />
+	</bean>
+
+	<!-- Enum beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.EnumData">
+		<description>Deprecated as of version 6.2</description>
+		<property name="code" type="String" />
+		<property name="label" type="String" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.EnumListData">
+		<description>Deprecated as of version 6.2</description>
+		<property name="enums" type="java.util.List&lt;EnumData>" />
+	</bean>
+
+	<!-- Page Template beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.PageTemplateData">
+		<property name="uid" type="String" />
+		<property name="uuid" type="String" />
+		<property name="name" type="String" />
+		<property name="frontEndName" type="String" />
+		<property name="previewIcon" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.PageTemplateDTO">
+		<property name="pageTypeCode" type="String" />
+		<property name="active" type="Boolean" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.PageTemplateListData">
+		<property name="templates" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.PageTemplateData>" />
+	</bean>
+	
+	<!-- Component Type beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.ComponentTypeData">
+		<property name="code" type="String" />
+		<property name="category" type="String" />
+		<property name="name" type="String" />
+		<property name="i18nKey" type="String" />
+		<property name="type" type="String" />
+		<property name="attributes" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.ComponentTypeAttributeData>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.ComponentTypeAttributeData">
+		<property name="qualifier" type="String" />
+		<property name="required" type="boolean" />
+		<property name="localized" type="Boolean" />
+		<property name="cmsStructureType" type="String" />
+		<property name="cmsStructureEnumType" type="String" />
+		<property name="i18nKey" type="String" />
+		<property name="dependsOn" type="String" />
+		<property name="options" type="java.util.List&lt;de.hybris.platform.cmsfacades.data.OptionData&gt;" />
+		<property name="idAttribute" type="String" />
+		<property name="labelAttributes" type="java.util.List&lt;String>" />
+		<property name="paged" type="boolean" />
+		<property name="editable" type="boolean" />
+		<property name="collection" type="boolean" />
+		<property name="uri" type="String" />
+		<property name="params" type="java.util.Map&lt;String,String>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.ComponentTypeListData">
+		<property name="componentTypes" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.ComponentTypeData>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.RestrictionTypeListData">
+		<property name="restrictionTypes" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.RestrictionTypeData>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.PageTypeListData">
+		<property name="pageTypes" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.PageTypeData>" />
+	</bean>
+	
+	<!-- Catalog Verion beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.CatalogVersionDetailData"
+			deprecated="Deprecated since 6.4, please use de.hybris.platform.cmssmarteditwebservices.data.CatalogData instead.">
+		<property name="catalogId" type="String" />
+		<property name="redirectUrl" type="String" />
+		<property name="name" type="java.util.Map&lt;String, String&gt;" />
+		<property name="version" type="String" />
+		<property name="active" type="Boolean" />
+		<property name="thumbnailUrl" type="String" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.CatalogVersionData">
+		<property name="uid" type="String" />
+		<property name="name" type="java.util.Map&lt;String, String&gt;"
+					 deprecated="Deprecated since 6.4, please use de.hybris.platform.cmssmarteditwebservices.data.CatalogData instead." />
+		<property name="version" type="String" />
+		<property name="active" type="Boolean" />
+		<property name="catalogVersionDetails" type="java.util.Collection&lt;CatalogVersionDetailData>"
+					 deprecated="Deprecated since 6.4, please use de.hybris.platform.cmssmarteditwebservices.data.CatalogData instead." />
+		<property name="pageDisplayConditions" type="java.util.List&lt;DisplayConditionData>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.CatalogVersionListData">
+		<property name="versions" type="java.util.List&lt;de.hybris.platform.cmsfacades.data.CatalogVersionData>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.data.DisplayConditionData">
+		<property name="typecode" type="String" />
+		<property name="options" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.OptionData>" />
+	</bean>
+
+	<!-- Sync Job beans -->
+	<bean class="de.hybris.platform.cmswebservices.data.SyncJobData">
+		<property name="syncStatus" type="String" />
+		<property name="startDate" type="java.util.Date" />
+		<property name="endDate" type="java.util.Date" />
+		<property name="creationDate" type="java.util.Date" />
+		<property name="lastModifiedDate" type="java.util.Date" />
+		<property name="syncResult" type="String" />
+		<property name="sourceCatalogVersion" type="String" />
+		<property name="targetCatalogVersion" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.SyncJobRequestData">
+		<property name="catalogId" type="String" />
+		<property name="sourceVersionId" type="String" />
+		<property name="targetVersionId" type="String" />
+	</bean>
+
+	<!-- WsDTO beans  -->
+
+	<bean class="de.hybris.platform.cmswebservices.dto.CMSItemSearchWsDTO">
+		<property name="mask" type="String" />
+		<property name="typeCode" type="String" />
+		<property name="catalogId" type="String" />
+		<property name="catalogVersion" type="String" />
+		<property name="itemSearchParams" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.dto.ContentSlotTypeRestrictionsListWsDTO">
+		<property name="typeRestrictionsList" type="java.util.List&lt;de.hybris.platform.cmswebservices.dto.ContentSlotTypeRestrictionsWsDTO>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.dto.ContentSlotTypeRestrictionsWsDTO">
+		<property name="contentSlotUid" type="String" />
+		<property name="validComponentTypes" type="java.util.List&lt;String>" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.dto.PageableWsDTO">
+		<property name="pageSize" type="int" />
+		<property name="currentPage" type="int" />
+		<property name="sort" type="String" />
+	</bean>
+
+
+	<!-- Beans for Products and Product Categories -->
+	
+	<bean class="de.hybris.platform.cmswebservices.dto.ProductDataListWsDTO">
+		<property name="products" type="java.util.List&lt;ProductWsDTO>" />
+		<property name="pagination" type="de.hybris.platform.webservicescommons.dto.PaginationWsDTO" />
+	</bean>
+	
+	<bean class="de.hybris.platform.cmswebservices.dto.CategoryDataListWsDTO">
+		<property name="productCategories" type="java.util.List&lt;CategoryWsDTO>" />
+		<property name="pagination" type="de.hybris.platform.webservicescommons.dto.PaginationWsDTO" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.dto.ProductWsDTO">
+		<property name="code" type="String" />
+		<property name="name" type="java.util.Map&lt;String,String>" />
+		<property name="description" type="java.util.Map&lt;String,String>" />
+		<property name="thumbnailMediaCode" type="String" />
+		<property name="catalogId" type="String" />
+		<property name="catalogVersion" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.dto.CategoryWsDTO">
+		<property name="code" type="String" />
+		<property name="name" type="java.util.Map&lt;String,String>" />
+		<property name="description" type="java.util.Map&lt;String,String>" />
+		<property name="thumbnailMediaCode" type="String" />
+		<property name="catalogId" type="String" />
+		<property name="catalogVersion" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.ItemTypeWsDTO">
+		<property name="itemType" type="String" />
+		<property name="i18nKey" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.SyncItemStatusWsDTO">
+		<property name="itemId" type="String" />
+		<property name="itemType" type="String" />
+		<property name="name" type="String" />
+		<property name="status" type="String" />
+		<property name="lastSyncStatus" type="Long"/>
+		<property name="dependentItemTypesOutOfSync" type="java.util.List&lt;ItemTypeWsDTO>" />
+		<property name="selectedDependencies" type="java.util.List&lt;SyncItemStatusWsDTO>" />
+		<property name="sharedDependencies" type="java.util.List&lt;SyncItemStatusWsDTO>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.ItemSynchronizationWsDTO">
+		<property name="itemId" type="String" />
+		<property name="itemType" type="String" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.data.SynchronizationWsDTO">
+		<property name="items" type="java.util.List&lt;ItemSynchronizationWsDTO>" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.dto.UserGroupWsDTO">
+		<property name="uid" type="String" />
+		<property name="name" type="java.util.Map&lt;String, String&gt;" />
+	</bean>
+
+	<bean class="de.hybris.platform.cmswebservices.dto.UserGroupListWsDTO">
+		<property name="userGroups" type="java.util.List&lt;UserGroupWsDTO>" />
+		<property name="pagination" type="de.hybris.platform.webservicescommons.dto.PaginationWsDTO" />
+	</bean>
+
+
+	<!-- Beans to be deprecated -->
+	<bean class="de.hybris.platform.cmswebservices.dto.MediaFileDto" extends="de.hybris.platform.cmsfacades.dto.MediaFileDto">
+		<description>Deprecated since 6.4, please use de.hybris.platform.cmsfacades.dto.MediaFileDto instead.</description>
+	</bean>
+	<bean class="de.hybris.platform.cmswebservices.dto.ComponentAndContentSlotValidationDto"
+			extends="de.hybris.platform.cmsfacades.dto.ComponentAndContentSlotValidationDto">
+		<description>Deprecated since 6.4, no longer used</description>
+	</bean>
+	<bean class="de.hybris.platform.cmswebservices.dto.ComponentTypeAndContentSlotValidationDto"
+			extends="de.hybris.platform.cmsfacades.dto.ComponentTypeAndContentSlotValidationDto">
+		<description>Deprecated since 6.4, no longer used</description>
+	</bean>
+	<bean class="de.hybris.platform.cmswebservices.dto.UpdateComponentValidationDto" 
+			extends="de.hybris.platform.cmsfacades.dto.UpdateComponentValidationDto">
+		<description>Deprecated since 6.4, no longer used</description>
+	</bean>
+	<bean class="de.hybris.platform.cmswebservices.dto.UpdatePageValidationDto"
+			extends="de.hybris.platform.cmsfacades.dto.UpdatePageValidationDto">
+		<description>Deprecated since 6.4, no longer used</description>
+	</bean>
+	<bean class="de.hybris.platform.cmswebservices.dto.UpdateRestrictionValidationDto"
+			extends="de.hybris.platform.cmsfacades.dto.UpdateRestrictionValidationDto">
+		<description>Deprecated since 6.4, no longer used</description>
+	</bean>
+	<bean class="de.hybris.platform.cmswebservices.data.ContentSlotTypeRestrictionsData"
+			extends="de.hybris.platform.cmsfacades.data.ContentSlotTypeRestrictionsData">
+		<description>Deprecated since 6.4, please use de.hybris.platform.cmsfacades.data.ContentSlotTypeRestrictionsData instead.</description>
+	</bean>
+	<bean class="de.hybris.platform.cmswebservices.data.ContentSlotTypeRestrictionsListData">
+		<description>Deprecated since 6.4, please use de.hybris.platform.cmswebservices.dto.ContentSlotTypeRestrictionsListWsDTO instead.</description>
+		<property name="typeRestrictionsList" type="java.util.List&lt;de.hybris.platform.cmswebservices.data.ContentSlotTypeRestrictionsData>" />
+	</bean>
+	<enum class="de.hybris.platform.cmswebservices.data.StructureTypeCategory">
+		<description>Deprecated since 6.4, please use de.hybris.platform.cmsfacades.data.StructureTypeCategory instead</description>
+		<value>COMPONENT</value>
+		<value>PREVIEW</value>
+		<value>PAGE</value>
+		<value>RESTRICTION</value>
+	</enum>
+	<enum class="de.hybris.platform.cmswebservices.page.DisplayCondition">
+		<description>Deprecated since 6.4, please use de.hybris.platform.cmsfacades.page.DisplayCondition instead</description>
+		<value>PRIMARY</value>
+		<value>VARIATION</value>
+	</enum>
+	
+</beans>

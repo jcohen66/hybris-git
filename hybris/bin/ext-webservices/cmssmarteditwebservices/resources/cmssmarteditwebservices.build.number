@@ -1,0 +1,9 @@
+#Ant properties
+#Mon Nov 13 12:04:25 CET 2017
+builddate=20171113 1159
+description=cmssmarteditwebservices
+name=cmssmarteditwebservices
+releasedate=20170803 1323
+vendor=hybris
+version=6.5.0.3
+version.api=6.5.0

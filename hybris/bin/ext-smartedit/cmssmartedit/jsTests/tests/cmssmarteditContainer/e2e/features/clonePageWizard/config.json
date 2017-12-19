@@ -1,0 +1,9 @@
+{
+    "jsFiles": [{
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/util/commonMockedModule/goToApparelStagedUK.js\"}",
+        "key": "applications.goToApparelStagedUK"
+    }, {
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/clonePageWizard/customMocks.js\"}",
+        "key": "applications.customMocksModule"
+    }]
+}

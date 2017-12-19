@@ -1,0 +1,30 @@
+<y-message data-ng-if="$ctrl.catalogVersionContainsPageWithSameTypeCode"
+    data-type="warning">
+    <message-description translate="se.cms.clonepagewizard.pageinfo.targetcatalogversion.pagetype.exists.message"
+        translate-value-type-code="{{$ctrl.pageTypeCode}}">
+    </message-description>
+</y-message>
+
+<div class="edit-page-basic-tab--header">
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label class="control-label"
+                data-translate="se.cms.pageinfo.page.type"></label>
+            <div class="form-readonly-text form-readonly-text__tight">{{$ctrl.pageTypeCode}}</div>
+        </div>
+        <div class="col-md-6 form-group">
+            <label class="control-label"
+                data-translate="se.cms.pageinfo.page.template"></label>
+            <div class="form-readonly-text form-readonly-text__tight">{{$ctrl.pageTemplate}}</div>
+        </div>
+    </div>
+</div>
+
+<generic-editor data-structure="$ctrl.structure"
+    data-content="$ctrl.content"
+    data-submit="$ctrl.submit"
+    data-reset="$ctrl.reset"
+    data-is-dirty="$ctrl.isDirty"
+    data-is-valid="$ctrl.isValid"
+    data-get-api="$ctrl.setGenericEditorApi($api)">
+</generic-editor>

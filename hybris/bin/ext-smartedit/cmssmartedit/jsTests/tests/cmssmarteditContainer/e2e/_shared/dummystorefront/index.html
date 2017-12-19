@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>dummy storefront</title>
+
+    <script src="imports/generated/lodash.min.js"></script>
+    <script src="imports/underscoreMock.js"></script>
+
+    <script src="imports/AcceleratorStorefrontMocks.js"></script>
+
+    <script src="imports/generated/jquery.min.js"></script>
+    <script src="imports/generated/webApplicationInjector.js"></script>
+
+    <link rel="stylesheet"
+        href="imports/generated/bootstrap.min.css">
+
+    <link rel="stylesheet"
+        href="layouts/sf-layout.css">
+
+    <!--Builder-->
+    <script src="layouts/sf-nodelib.js"></script>
+    <script src="builder/sf-builder-config.js"></script>
+    <script src="builder/sf-builder.js"></script>
+
+    <!--Delays-->
+    <script src="delays/sf-delay-none.js"></script>
+    <script src="delays/sf-delay-demo.js"></script>
+
+    <!--Layouts-->
+    <script src="layouts/sf-layout-default.js"></script>
+    <script src="layouts/sf-layout-demo.js"></script>
+
+    <!--Render strategies-->
+    <script src="renderStrategies/storefront-component-render.js"></script>
+
+
+    <script type="text/javascript">
+    window.testAssets = true;
+    window.delays = sessionStorage.getItem("STOREFRONT_DELAY_CONFIG");
+    window.sfAssetsRootPath = '../../_sfAssets/';
+    </script>
+    <script src="../../_sfAssets/sf-assets.js"></script>
+
+</head>
+
+
+<body class="someInitialClass">
+
+    <!--TODO - find some way to move these out of index html if possible -->
+    <label style="position: fixed"
+        class="noOffset1">Top
+        <br />Left</label>
+    <page-change-test></page-change-test>
+    <div class="y-notification-clickthrough">
+        Clickthrough Tester
+        <input type="checkbox"
+            id="test-notification-clickthrough-checkbox">
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+
+            <!--=============================================-->
+            <h3>Auto-Generated Storefront Content</h3>
+            <h4 class="offset1">Page ID:
+                <span id="page-id-insertion-point"></span>
+            </h4>
+            <div id="insertion-point">
+                <!--storefront generator will insert components and slots here-->
+            </div>
+
+            <!--=============================================-->
+            <!--We need 1 static component for testing hybris page change-->
+            <!--=============================================-->
+            <hr />
+            <h3>Static Storefront Content</h3>
+            <div class="slot smartEditComponent"
+                id="staticDummySlot"
+                data-smartedit-component-type="ContentSlot"
+                data-smartedit-component-id="staticDummySlot"
+                data-smartedit-catalog-version-uuid="apparel-ukContentCatalog/Staged"
+                data-smartedit-component-uuid="staticDummySlot">
+                <div class="component smartEditComponent"
+                    id="staticDummyComponent"
+                    data-smartedit-component-type="componentType1"
+                    data-smartedit-component-id="staticDummyComponent"
+                    data-smartedit-component-uuid="staticDummyComponent"
+                    data-smartedit-catalog-version-uuid="apparel-ukContentCatalog/Staged">
+                    <div class="box">
+                        <p>new component 1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <sak-executor-debug></sak-executor-debug>
+</body>
+
+
+</html>

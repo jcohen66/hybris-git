@@ -1,0 +1,12 @@
+{
+    "jsFiles": [{
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/util/commonMockedModule/setApparelStagedUKExperience.js\"}",
+        "key": "applications.setApparelStagedUKExperience"
+    }, {
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/genericEditor/customViewController.js\"}",
+        "key": "applications.customViewModule"
+    }, {
+        "value": "{\"smartEditContainerLocation\":\"/jsTests/tests/cmssmarteditContainer/e2e/features/genericEditor/singleOnlineProductSelector/customViewHTML.js\"}",
+        "key": "applications.customViewHTML"
+    }]
+}

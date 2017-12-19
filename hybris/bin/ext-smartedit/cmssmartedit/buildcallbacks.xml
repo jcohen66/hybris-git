@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2017 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<project name="cmssmartedit_buildcallbacks">
+
+    <patternset id="extension.cmssmartedit.binary.filter">
+        <patternset refid="extension.binary.filter"/>
+        <exclude name="node_modules/"/>
+        <exclude name="jsTarget/"/>
+        <exclude name="**/static-resources/dist/"/>
+        <exclude name="**/webroot/cmssmartedit/"/>
+        <exclude name="**/webroot/css/style.css"/>
+        <exclude name="buildArtifacts/"/>
+    </patternset>
+
+    <patternset id="extension.cmssmartedit.source.filter">
+        <patternset refid="extension.source.filter"/>
+        <exclude name="node_modules/"/>
+        <exclude name="jsTarget/"/>
+        <exclude name="**/static-resources/dist/"/>
+        <exclude name="**/webroot/cmssmartedit/"/>
+        <exclude name="**/webroot/css/style.css"/>
+        <exclude name="buildArtifacts/"/>
+    </patternset>
+
+    <patternset id="extension.cmssmartedit.production.filter">
+        <patternset refid="extension.production.filter"/>
+        <exclude name="node_modules/**"/>
+        <exclude name="jsTarget/"/>
+        <exclude name="seLibraries/"/>
+        <exclude name="buildArtifacts/"/>
+    </patternset>
+
+    <macrodef name="cmssmartedit_before_clean">
+        <sequential>
+            <if>
+                <isset property="ext.npmancillary.path"/>
+                <then>
+                    <removeLinkToSELibraries path="${ext.cmssmartedit.path}"/>
+                    <unlinkE2E_shared path="${ext.cmssmartedit.path}${file.separator}jsTests${file.separator}tests${file.separator}cmssmarteditContainer${file.separator}e2e${file.separator}"/>
+                    <removeLink path="${ext.cmssmartedit.path}/tmp"/>
+                    <removeLink path="${ext.cmssmartedit.path}/jsTarget"/>
+                    <removeLink path="${ext.cmssmartedit.path}/web/webroot/css"/>
+                    <removeLink path="${ext.cmssmartedit.path}/web/webroot/cmssmartedit/js"/>
+                    <removeNodeModulesSymlink path="${ext.cmssmartedit.path}"/>
+                </then>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="cmssmartedit_before_build">
+        <sequential>
+            <copy file="${ext.smartedit.path}${file.separator}.jshintrc"
+                  tofile="${ext.cmssmartedit.path}${file.separator}.jshintrc" overwrite="true"/>
+            <copy file="${ext.smartedit.path}${file.separator}smarteditcontainerJSTests${file.separator}protractor-conf.js"
+                  tofile="${ext.cmssmartedit.path}${file.separator}jsTests${file.separator}protractor-conf.js" overwrite="true"/>
+            <safeLink sourcePath="${ext.smartedit.path}${file.separator}gruntTasks" targetPath="${ext.cmssmartedit.path}${file.separator}gruntTasks"/>
+			<copy file="${ext.smartedit.path}${file.separator}resources${file.separator}localization${file.separator}smartedit-locales_en.properties"
+				tofile="${ext.cmssmartedit.path}${file.separator}gruntTasks${file.separator}smartedit-locales_en.properties" overwrite="true"/>
+            <if>
+                <isset property="ext.npmancillary.path"/>
+                <then>
+                    <linkToSELibraries path="${ext.cmssmartedit.path}"/>
+                    <linkE2E_shared path="${ext.cmssmartedit.path}${file.separator}jsTests${file.separator}tests${file.separator}cmssmarteditContainer${file.separator}e2e${file.separator}"/>
+					<gruntBuild path="${ext.cmssmartedit.path}" phase="packageSkipTests"/>
+                </then>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="cmssmartedit_before_yunit">
+        <sequential>
+            <if>
+                <isset property="ext.npmancillary.path"/>
+                <then>
+                    <gruntBuild path="${ext.cmssmartedit.path}" phase="test_only"/>
+                </then>
+            </if>
+        </sequential>
+    </macrodef>
+
+</project>
